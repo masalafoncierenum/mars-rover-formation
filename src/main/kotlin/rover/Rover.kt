@@ -1,5 +1,5 @@
 package rover
 
-class Rover(x: Int, y: Int, direction: String) {
+data class Rover(val x: Int, val y: Int, val direction: String) {
 
 }
