@@ -1,5 +1,7 @@
 package rover
 
-data class Rover(val x: Int, val y: Int, val direction: String) {
+import point.Point
+
+data class Rover(val point: Point, val direction: String) {
 
 }
