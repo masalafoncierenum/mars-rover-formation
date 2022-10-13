@@ -58,5 +58,14 @@ class MarsRoverTest {
 
             assertThat(rover.direction).isEqualTo(W)
         }
+
+        @Test
+        fun `should rotate right from north`() {
+            val rover = Rover(point, N)
+
+            rover.turn("r")
+
+            assertThat(rover.direction).isEqualTo(E)
+        }
     }
 }

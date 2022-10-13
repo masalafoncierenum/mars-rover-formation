@@ -3,9 +3,14 @@ package rover
 import position.Direction
 import position.Point
 
-data class Rover(val point: Point, val direction: Direction) {
+data class Rover(val point: Point, var direction: Direction) {
     fun turn(rotation: String) {
-        TODO("Not yet implemented")
+        if (rotation == "l") {
+            this.direction = this.direction.turnLeft()
+        }
+        else{
+            this.direction = this.direction.turnRight()
+        }
     }
 
 }
