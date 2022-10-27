@@ -1,3 +1,4 @@
+import command.Command
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
@@ -8,14 +9,13 @@ import rover.Rover
 
 class MarsRoverTest {
 
+    private val initialPoint = Point(1, 1)
     @Nested
     inner class Initialization {
 
-        private val point = Point(1, 1)
-
         @Test
         fun `should create a rover facing north`() {
-            val rover = Rover(point, N)
+            val rover = Rover(initialPoint, N)
 
             assertThat(rover.point).isEqualTo(Point(1, 1))
             assertThat(rover.direction).isEqualTo(N)
@@ -23,7 +23,7 @@ class MarsRoverTest {
 
         @Test
         fun `should create a rover facing south`() {
-            val rover = Rover(point, S)
+            val rover = Rover(initialPoint, S)
 
             assertThat(rover.point).isEqualTo(Point(1, 1))
             assertThat(rover.direction).isEqualTo(S)
@@ -31,7 +31,7 @@ class MarsRoverTest {
 
         @Test
         fun `should create a rover facing east`() {
-            val rover = Rover(point, E)
+            val rover = Rover(initialPoint, E)
 
             assertThat(rover.point).isEqualTo(Point(1, 1))
             assertThat(rover.direction).isEqualTo(E)
@@ -39,7 +39,7 @@ class MarsRoverTest {
 
         @Test
         fun `should create a rover facing west`() {
-            val rover = Rover(point, W)
+            val rover = Rover(initialPoint, W)
 
             assertThat(rover.point).isEqualTo(Point(1, 1))
             assertThat(rover.direction).isEqualTo(W)
@@ -48,11 +48,11 @@ class MarsRoverTest {
 
     @Nested
     inner class Rotation {
-        private val point = Point(1, 1)
+
 
         @Test
         fun `should rotate left from north`() {
-            val rover = Rover(point, N)
+            val rover = Rover(initialPoint, N)
 
             rover.turn("l")
 
@@ -61,7 +61,7 @@ class MarsRoverTest {
 
         @Test
         fun `should rotate right from north`() {
-            val rover = Rover(point, N)
+            val rover = Rover(initialPoint, N)
 
             rover.turn("r")
 
@@ -70,15 +70,26 @@ class MarsRoverTest {
 
         @Test
         fun `should rotate right from west`() {
-            val rover = Rover(point, W)
+            val rover = Rover(initialPoint, W)
 
             rover.turn("r")
 
             assertThat(rover.direction).isEqualTo(N)
         }
     }
+
     @Nested
-    inner class Movement {
+    inner class CommandReading {
+        @Test
+        fun `should rotate with command`() {
+            val rover = Rover(initialPoint, N)
+            val expectedDirection = rover.direction.turnLeft()
+            val commandLeftTurn = Command("turn", "l")
+
+            rover.receiveCommand(commandLeftTurn)
+
+            assertThat(rover.direction).isEqualTo(expectedDirection)
+        }
 
     }
 }
