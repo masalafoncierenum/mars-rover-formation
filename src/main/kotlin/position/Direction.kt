@@ -18,8 +18,8 @@ enum class Direction {
         return directions[newOrdinal]
     }
 
-    fun turn(parameter: String): Direction {
-        return if (parameter == "r") {
+    fun turn(parameter: TurningDirection): Direction {
+        return if (parameter == TurningDirection.RIGHT) {
             turnRight()
         } else {
             turnLeft()
@@ -29,5 +29,14 @@ enum class Direction {
 
 enum class TurningDirection(val value: String) {
     RIGHT("r"),
-    LEFT("l");
+    LEFT("l"),
+    UNKNOWN("UNKNOWN");
+
+    companion object {
+        fun from(value: String) : TurningDirection {
+            return values().find {
+                it.value == value
+            }?: UNKNOWN;
+        }
+    }
 }
