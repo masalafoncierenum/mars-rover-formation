@@ -18,5 +18,16 @@ enum class Direction {
         return directions[newOrdinal]
     }
 
+    fun turn(parameter: String): Direction {
+        return if (parameter == "r") {
+            turnRight()
+        } else {
+            turnLeft()
+        }
+    }
+}
 
+enum class TurningDirection(val value: String) {
+    RIGHT("r"),
+    LEFT("l");
 }

@@ -10,6 +10,7 @@ import rover.Rover
 class MarsRoverTest {
 
     private val initialPoint = Point(1, 1)
+
     @Nested
     inner class Initialization {
 
@@ -81,12 +82,23 @@ class MarsRoverTest {
     @Nested
     inner class CommandReading {
         @Test
-        fun `should rotate with command`() {
+        fun `should turn left with command`() {
             val rover = Rover(initialPoint, N)
-            val expectedDirection = rover.direction.turnLeft()
+            val expectedDirection = rover.direction.turn("l")
             val commandLeftTurn = Command("turn", "l")
 
             rover.receiveCommand(commandLeftTurn)
+
+            assertThat(rover.direction).isEqualTo(expectedDirection)
+        }
+
+        @Test
+        fun `should turn right with command`() {
+            val rover = Rover(initialPoint, N)
+            val expectedDirection = rover.direction.turn("r")
+            val commandRightTurn = Command("turn", "r")
+
+            rover.receiveCommand(commandRightTurn)
 
             assertThat(rover.direction).isEqualTo(expectedDirection)
         }
