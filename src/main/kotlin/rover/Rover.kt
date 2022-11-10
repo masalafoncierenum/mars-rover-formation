@@ -17,8 +17,10 @@ data class Rover(var point: Point, var direction: Direction) {
     }
 
     fun move(move: Move): Point {
-        if (this.direction == Direction.N) this.point = Point(1, 2)
+        if (this.direction == Direction.N) this.point = this.point.copy(y=this.point.y+1)
         if (this.direction == Direction.S) this.point = Point(1, 0)
+        if (this.direction == Direction.E) this.point = Point(0, 1)
+        if (this.direction == Direction.W) this.point = Point(2, 1)
 
         return this.point
     }
