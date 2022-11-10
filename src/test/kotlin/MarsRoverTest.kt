@@ -112,8 +112,18 @@ class MarsRoverTest {
     @Nested
     inner class Movement {
         @ParameterizedTest
-        @CsvSource("1,2,N", "1,0,S", "0,1,E", "2,1,W")
+        @CsvSource("1,2,N", "1,0,S", "2,1,E", "0,1,W")
         internal fun `should move forward the rover`(x: Int, y: Int, direction: String) {
+            val rover = Rover(initialPoint, valueOf(direction))
+
+            rover.move(Move.F)
+
+            assertThat(rover.point).isEqualTo(Point(x,y))
+        }
+
+        @ParameterizedTest
+        @CsvSource("1,2,N", "1,0,S", "2,1,E", "0,1,W")
+        internal fun `should move backward the rover`(x: Int, y: Int, direction: String) {
             val rover = Rover(initialPoint, valueOf(direction))
 
             rover.move(Move.F)

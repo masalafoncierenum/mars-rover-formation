@@ -16,13 +16,13 @@ data class Rover(var point: Point, var direction: Direction) {
         return turn(turningDirection)
     }
 
-    fun move(move: Move): Point {
+    fun move(move: Move): Rover {
         if (this.direction == Direction.N) this.point = this.point.copy(y=this.point.y+1)
-        if (this.direction == Direction.S) this.point = Point(1, 0)
-        if (this.direction == Direction.E) this.point = Point(0, 1)
-        if (this.direction == Direction.W) this.point = Point(2, 1)
+        if (this.direction == Direction.S) this.point = this.point.copy(y=this.point.y-1)
+        if (this.direction == Direction.E) this.point = this.point.copy(x=this.point.x+1)
+        if (this.direction == Direction.W) this.point = this.point.copy(x=this.point.x-1)
 
-        return this.point
+        return this
     }
 
 }
