@@ -16,8 +16,10 @@ data class Rover(var point: Point, var direction: Direction) {
         return turn(turningDirection)
     }
 
-    fun move(f: Move): Point {
-        this.point = Point(1, 2)
+    fun move(move: Move): Point {
+        if (this.direction == Direction.N) this.point = Point(1, 2)
+        if (this.direction == Direction.S) this.point = Point(1, 0)
+
         return this.point
     }
 

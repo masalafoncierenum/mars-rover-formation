@@ -3,6 +3,8 @@ import command.Command
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.CsvSource
 import position.Direction.*
 import position.Point
 import position.TurningDirection
@@ -117,6 +119,25 @@ class MarsRoverTest {
             rover.move(Move.F)
 
             assertThat(rover.point).isEqualTo(Point(1,2))
+        }
+
+        @Test
+        internal fun `should move forward the rover from South`() {
+            val rover = Rover(initialPoint, S)
+
+            rover.move(Move.F)
+
+            assertThat(rover.point).isEqualTo(Point(1,0))
+        }
+
+        @ParameterizedTest
+        @CsvSource("1,2,N")
+        internal fun `should move forward the rover`(x: Int, y: Int, direction: String) {
+            val rover = Rover(initialPoint, valueOf(direction))
+
+            rover.move(Move.F)
+
+            assertThat(rover.point).isEqualTo(Point(x,y))
         }
     }
 }
