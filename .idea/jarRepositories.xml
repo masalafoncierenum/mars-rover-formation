@@ -12,6 +12,11 @@
       <option name="url" value="https://repo.maven.apache.org/maven2" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="lfn-artifactory-avatar" />
+      <option name="name" value="lfn-artifactory-avatar" />
+      <option name="url" value="https://lfn-artifactory-983974232060.d.codeartifact.eu-west-3.amazonaws.com/maven/avatar/" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="central" />
       <option name="name" value="Maven Central repository" />
       <option name="url" value="https://repo1.maven.org/maven2" />

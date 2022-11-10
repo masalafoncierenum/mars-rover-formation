@@ -1,9 +1,11 @@
+import Move.Move
 import command.Command
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import position.Direction.*
 import position.Point
+import position.TurningDirection
 import rover.Rover
 
 
@@ -55,7 +57,7 @@ class MarsRoverTest {
         fun `should rotate left from north`() {
             val rover = Rover(initialPoint, N)
 
-            rover.turn("l")
+            rover.turn(TurningDirection.LEFT)
 
             assertThat(rover.direction).isEqualTo(W)
         }
@@ -64,7 +66,7 @@ class MarsRoverTest {
         fun `should rotate right from north`() {
             val rover = Rover(initialPoint, N)
 
-            rover.turn("r")
+            rover.turn(TurningDirection.RIGHT)
 
             assertThat(rover.direction).isEqualTo(E)
         }
@@ -73,7 +75,7 @@ class MarsRoverTest {
         fun `should rotate right from west`() {
             val rover = Rover(initialPoint, W)
 
-            rover.turn("r")
+            rover.turn(TurningDirection.RIGHT)
 
             assertThat(rover.direction).isEqualTo(N)
         }
@@ -84,7 +86,7 @@ class MarsRoverTest {
         @Test
         fun `should turn left with command`() {
             val rover = Rover(initialPoint, N)
-            val expectedDirection = rover.direction.turn("l")
+            val expectedDirection = rover.direction.turn(TurningDirection.LEFT)
             val commandLeftTurn = Command("turn", "l")
 
             rover.receiveCommand(commandLeftTurn)
@@ -95,7 +97,7 @@ class MarsRoverTest {
         @Test
         fun `should turn right with command`() {
             val rover = Rover(initialPoint, N)
-            val expectedDirection = rover.direction.turn("r")
+            val expectedDirection = rover.direction.turn(TurningDirection.RIGHT)
             val commandRightTurn = Command("turn", "r")
 
             rover.receiveCommand(commandRightTurn)
@@ -103,5 +105,18 @@ class MarsRoverTest {
             assertThat(rover.direction).isEqualTo(expectedDirection)
         }
 
+    }
+
+    @Nested
+    inner class Movement {
+
+        @Test
+        internal fun `should move forward the rover from North with a given position`() {
+            val rover = Rover(initialPoint, N)
+
+            rover.move(Move.F)
+
+            assertThat(rover.point).isEqualTo(Point(1,2))
+        }
     }
 }
