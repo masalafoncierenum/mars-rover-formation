@@ -1,6 +1,6 @@
 package domain.rover
 
-import domain.Move.Move
+import domain.move.Move
 import domain.command.Command
 import domain.position.Direction
 import domain.position.Point

@@ -1,6 +1,6 @@
 package domain
 
-import domain.Move.Move
+import domain.move.Move
 import domain.command.Command
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
