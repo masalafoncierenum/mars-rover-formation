@@ -7,6 +7,8 @@ import position.Point
 import position.TurningDirection
 
 data class Rover(var point: Point, var direction: Direction) {
+
+
     fun turn(rotation: TurningDirection) {
         this.direction = this.direction.turn(rotation)
     }
