@@ -1,4 +1,4 @@
-package command
+package domain.command
 
 data class Command(
     val type: String,

@@ -1,14 +1,16 @@
-import Move.Move
-import command.Command
+package domain
+
+import domain.Move.Move
+import domain.command.Command
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
-import position.Direction.*
-import position.Point
-import position.TurningDirection
-import rover.Rover
+import domain.position.Direction.*
+import domain.position.Point
+import domain.position.TurningDirection
+import domain.rover.Rover
 
 
 class MarsRoverTest {
