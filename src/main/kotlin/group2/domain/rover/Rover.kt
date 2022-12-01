@@ -1,10 +1,10 @@
-package domain.rover
+package group2.domain.rover
 
-import domain.move.Move
-import domain.command.Command
-import domain.position.Direction
-import domain.position.Point
-import domain.position.TurningDirection
+import group2.domain.move.Move
+import group2.domain.command.Command
+import group2.domain.position.Direction
+import group2.domain.position.Point
+import group2.domain.position.TurningDirection
 
 data class Rover(var point: Point, var direction: Direction) {
 

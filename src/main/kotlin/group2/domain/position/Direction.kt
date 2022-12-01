@@ -1,4 +1,4 @@
-package domain.position
+package group2.domain.position
 
 enum class Direction {
     N,

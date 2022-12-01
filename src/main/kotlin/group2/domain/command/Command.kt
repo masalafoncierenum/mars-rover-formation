@@ -1,4 +1,4 @@
-package domain.command
+package group2.domain.command
 
 data class Command(
     val type: String,

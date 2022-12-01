@@ -1,4 +1,4 @@
-package domain.rover
+package group2.domain.rover
 
 interface RoverRepository {
 
